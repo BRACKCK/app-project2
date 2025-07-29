@@ -1,8 +1,9 @@
 import pytest
-from app import app
+from app import app  # Change from "app.app" to just "app"
 
 @pytest.fixture
 def client():
+    app.config['TESTING'] = True
     return app.test_client()
 
 def test_home_page_perf(benchmark, client):

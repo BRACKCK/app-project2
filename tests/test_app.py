@@ -1,10 +1,12 @@
+from app import app  # Change from "app.app" to just "app"
 import unittest
-from app import app
 
 class FunctionalTests(unittest.TestCase):
-
     def setUp(self):
+        app.config['TESTING'] = True
         self.client = app.test_client()
+    
+    # ... rest of your test methods ...
 
     def test_home_page_loads(self):
         response = self.client.get('/')

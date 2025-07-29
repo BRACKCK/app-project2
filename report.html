@@ -1,7 +1,8 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <title id="head-title">report.html</title>
       <link href="assets\style.css" rel="stylesheet" type="text/css"/>
   </head>
@@ -71,19 +72,26 @@
         <div class="summary__spacer"></div>
         <div class="controls">
           <div class="filters">
-            <input checked="true" class="filter" name="filter_checkbox" type="checkbox" data-test-result="failed" disabled/>
+            <input checked="true" class="filter" name="filter_checkbox" type="checkbox" data-test-result="failed" disabled id="filter_failed" title="Show/hide failed tests"/>
+            <label for="filter_failed" class="visually-hidden">Failed tests</label>
             <span class="failed">0 Failed,</span>
-            <input checked="true" class="filter" name="filter_checkbox" type="checkbox" data-test-result="passed" disabled/>
+            <input checked="true" class="filter" name="filter_checkbox" type="checkbox" data-test-result="passed" disabled id="filter_passed" title="Show/hide passed tests"/>
+            <label for="filter_passed" class="visually-hidden">Passed tests</label>
             <span class="passed">0 Passed,</span>
-            <input checked="true" class="filter" name="filter_checkbox" type="checkbox" data-test-result="skipped" disabled/>
+            <input checked="true" class="filter" name="filter_checkbox" type="checkbox" data-test-result="skipped" disabled id="filter_skipped" title="Show/hide skipped tests"/>
+            <label for="filter_skipped" class="visually-hidden">Skipped tests</label>
             <span class="skipped">0 Skipped,</span>
-            <input checked="true" class="filter" name="filter_checkbox" type="checkbox" data-test-result="xfailed" disabled/>
+            <input checked="true" class="filter" name="filter_checkbox" type="checkbox" data-test-result="xfailed" disabled id="filter_xfailed" title="Show/hide expected failures"/>
+            <label for="filter_xfailed" class="visually-hidden">Expected failures</label>
             <span class="xfailed">0 Expected failures,</span>
-            <input checked="true" class="filter" name="filter_checkbox" type="checkbox" data-test-result="xpassed" disabled/>
+            <input checked="true" class="filter" name="filter_checkbox" type="checkbox" data-test-result="xpassed" disabled id="filter_xpassed" title="Show/hide unexpected passes"/>
+            <label for="filter_xpassed" class="visually-hidden">Unexpected passes</label>
             <span class="xpassed">0 Unexpected passes,</span>
-            <input checked="true" class="filter" name="filter_checkbox" type="checkbox" data-test-result="error" disabled/>
+            <input checked="true" class="filter" name="filter_checkbox" type="checkbox" data-test-result="error" disabled id="filter_error" title="Show/hide errors"/>
+            <label for="filter_error" class="visually-hidden">Errors</label>
             <span class="error">0 Errors,</span>
-            <input checked="true" class="filter" name="filter_checkbox" type="checkbox" data-test-result="rerun" disabled/>
+            <input checked="true" class="filter" name="filter_checkbox" type="checkbox" data-test-result="rerun" disabled id="filter_rerun" title="Show/hide reruns"/>
+            <label for="filter_rerun" class="visually-hidden">Reruns</label>
             <span class="rerun">0 Reruns</span>
           </div>
           <div class="collapse">
