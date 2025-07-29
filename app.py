@@ -148,7 +148,8 @@ def create_app():
                 posterior = (likelihood * self.appliance_high_usage_prior) / (
                     (likelihood * self.appliance_high_usage_prior) + 
                     ((1 - likelihood) * (1 - self.appliance_high_usage_prior))
-                
+                )
+
                 if posterior > 0.7:
                     insights.append("High probability of excessive energy usage compared to similar homes")
                 elif posterior < 0.3:
