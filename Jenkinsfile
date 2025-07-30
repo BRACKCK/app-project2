@@ -33,7 +33,7 @@ pipeline {
             steps {
                  bat '''
                     call venv\\Scripts\\activate
-                    pytest test_perf.py
+                    pytest test_perf.py -v
                 '''
         }
     }
