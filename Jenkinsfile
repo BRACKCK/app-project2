@@ -7,7 +7,7 @@ pipeline {
                 git branch: 'main', url: 'https://github.com/BRACKCK/app-project2.git'
             }
         }
-/*
+
         stage('Set up Python') {
             steps {
                 bat '''
@@ -15,10 +15,11 @@ pipeline {
                     call venv\\Scripts\\activate
                     python -m pip install --upgrade pip
                     pip install -r requirements.txt
+                    pip install flake8
                 '''
             }
         }
-*/
+
         stage('Functional Tests') {
             steps {
                 bat '''
@@ -28,8 +29,6 @@ pipeline {
                 '''
             }
         }
-
-
 
         stage('Linting (Maintainability)') {
             steps {
