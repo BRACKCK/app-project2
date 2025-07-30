@@ -29,14 +29,14 @@ pipeline {
             }
         }
 
-        stage('Performance Benchmark') {
+        stage('Performance Tests') {
             steps {
-                bat '''
+                 bat '''
                     call venv\\Scripts\\activate
-                    pytest test_perf.py --benchmark-only
+                    pytest test_perf.py
                 '''
-            }
         }
+    }
 
         stage('Linting (Maintainability)') {
             steps {
