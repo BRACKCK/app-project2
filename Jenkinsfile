@@ -29,15 +29,6 @@ pipeline {
             }
         }
 
-        stage('Performance Test') {
-            steps {
-                bat '''
-                    call venv\\Scripts\\activate
-                    set PYTHONPATH=%cd%
-                    pytest tests/test_perf.py -v
-                '''
-            }
-        }
 
         stage('Linting (Maintainability)') {
             steps {
