@@ -7,7 +7,7 @@ pipeline {
                 git branch: 'main', url: 'https://github.com/BRACKCK/app-project2.git'
             }
         }
-
+/*
         stage('Set up Python') {
             steps {
                 bat '''
@@ -18,7 +18,7 @@ pipeline {
                 '''
             }
         }
-
+*/
         stage('Functional Tests') {
             steps {
                 bat '''
@@ -28,6 +28,7 @@ pipeline {
                 '''
             }
         }
+
 
 
         stage('Linting (Maintainability)') {
