@@ -15,7 +15,7 @@ pipeline {
                     call venv\\Scripts\\activate
                     python -m pip install --upgrade pip
                     pip install -r requirements.txt
-                    pip install flake8
+                    pip install flake8 selenium webdriver-manager
                 '''
             }
         }
@@ -43,9 +43,10 @@ pipeline {
             steps {
                 bat '''
                     call venv\\Scripts\\activate
-                    start /B flask run
-                    timeout /T 5 >nul
-                    pytest tests/test_ui_selenium.py
+                    start /B python -m flask run
+                    timeout /T 10 >nul
+                    pytest tests/test_ui_selenium.py -v
+                    taskkill /IM "python.exe" /F
                 '''
             }
         }
@@ -54,6 +55,7 @@ pipeline {
     post {
         always {
             echo 'Cleaning up workspace...'
+            bat 'taskkill /IM "python.exe" /F 2>nul || echo "No python processes to kill"'
         }
         success {
             echo 'Pipeline completed successfully!'
