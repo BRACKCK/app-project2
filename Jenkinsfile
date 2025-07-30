@@ -10,13 +10,15 @@ pipeline {
 
         stage('Set up Python') {
             steps {
-                    //For windows systems
-                        bat 'python -m venv venv'
-                        bat 'call venv\\Scripts\\activate'
-                        bat 'python -m pip install --upgrade pip'
-                        bat 'pip install -r requirements.txt'
+                bat '''
+                    python -m venv venv
+                    call venv\\Scripts\\activate
+                    python -m pip install --upgrade pip
+                    pip install -r requirements.txt
+                '''
+            }
         }
-    }
+
         stage('Functional Tests') {
             steps {
                 bat '''
@@ -56,6 +58,7 @@ pipeline {
             }
         }
     }
+
     post {
         always {
             echo 'Cleaning up workspace...'
@@ -64,7 +67,7 @@ pipeline {
             echo 'Pipeline completed successfully!'
         }
         failure {
-            echo 'Pipeline failed. please check the logs for error.'
+            echo 'Pipeline failed. Please check the logs for error.'
         }
     }
 }
