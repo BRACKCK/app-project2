@@ -33,6 +33,7 @@ pipeline {
             steps {
                 bat '''
                     call venv\\Scripts\\activate
+                    set PYTHONPATH=%cd%
                     pytest tests/test_perf.py -v
                 '''
             }
