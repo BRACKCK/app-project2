@@ -10,14 +10,20 @@ pipeline {
 
         stage('Set up Python') {
             steps {
-                bat '''
-                    python -m venv venv
-                    call venv\\Scripts\\activate
-                    python -m pip install --upgrade pip
-                    pip install -r requirements.txt
-                    pip install pytest pytest-benchmark flake8
-                '''
+                script{
+                    //For Unix-like systems
+                    if (isUnix()) {
+                        sh 'python3 -m venv venv'
+                        sh 'source venv/bin/activate'
+                        sh 'pip install --upgrade pip'
+                        sh 'pip install -r requirements.txt'
             }
+                    //For Windows systems
+                    else {
+                        bat 'python -m venv venv'
+                        bat 'call venv \\Scripts\\activate'
+                        bat 'python -m pip install --upgrade pip'
+                        bat 'pip install -r requirements.txt'
         }
 
         stage('Functional Tests') {
