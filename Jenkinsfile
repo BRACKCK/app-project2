@@ -10,14 +10,13 @@ pipeline {
 
         stage('Set up Python') {
             steps {
-                script{
                     //For windows systems
                         bat 'python -m venv venv'
                         bat 'call venv \\Scripts\\activate'
                         bat 'python -m pip install --upgrade pip'
                         bat 'pip install -r requirements.txt'
         }
-
+    }
         stage('Functional Tests') {
             steps {
                 bat '''
@@ -57,4 +56,18 @@ pipeline {
             }
         }
     }
+    post {
+        always {
+            echo 'Cleaning up workspace...'
+            deleteDir()
+        }
+        success {
+            echo 'Pipeline completed successfully!'
+            deleteDir()
+        }
+        failure {
+            echo 'Pipeline failed. please check the logs for errore.'
+        }
+    }
+}
 }
