@@ -23,20 +23,20 @@ pipeline {
             steps {
                 bat '''
                     call venv\\Scripts\\activate
-                    coverage run -m unittest discover -s . -p "test_*.py"
+                    coverage run -m unittest discover -s tests -p "test_*.py"
                     coverage report
                 '''
             }
         }
 
-        stage('Performance Tests') {
+        stage('Performance Test') {
             steps {
-                 bat '''
+                bat '''
                     call venv\\Scripts\\activate
-                    pytest test_perf.py -v
+                    pytest tests/test_perf.py -v
                 '''
+            }
         }
-    }
 
         stage('Linting (Maintainability)') {
             steps {
@@ -53,7 +53,7 @@ pipeline {
                     call venv\\Scripts\\activate
                     start /B flask run
                     timeout /T 5 >nul
-                    pytest tests\\test_ui_selenium.py
+                    pytest tests/test_ui_selenium.py
                 '''
             }
         }
